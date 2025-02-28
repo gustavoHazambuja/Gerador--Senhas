@@ -24,7 +24,7 @@ public class Password {
 
     public String generatePassword(){
 
-        String result = UUID.randomUUID().toString().substring(0, 30);
+        String result = UUID.randomUUID().toString().replace("-", "").substring(0, 30);
 
         return result;
     }
