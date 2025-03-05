@@ -1,6 +1,6 @@
 package Entities;
 
-import java.util.UUID;
+import java.security.SecureRandom;
 
 public class Password {
     
@@ -22,10 +22,21 @@ public class Password {
         this.passWord = passWord;
     }
 
-    public String generatePassword(){
+    public String generatedPassword(int length){
 
-        String result = UUID.randomUUID().toString().replace("-", "").substring(0, 30);
+        String caracters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+";
 
-        return result;
+        SecureRandom random = new SecureRandom();
+
+        StringBuilder senha = new StringBuilder();
+
+        for(int i = 0; i<length; i++){
+            int index = random.nextInt(caracters.length());
+            char caracter = caracters.charAt(index);
+            senha.append(caracter);
+
+        }
+
+        return senha.toString();
     }
 }
